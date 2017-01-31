@@ -1,15 +1,15 @@
 $(document).ready(function() {
 
 for(var a = 0; a < 15; a++) {
-$("#wrapper > :first-child").after("<div class='block'></div>");
+$("#wrapper > :first-child").after("<div class='block16'></div>");
 };
 
-$(".block").mouseenter(function () {
-	$(this).fadeTo("slow", 0.1);
+$(".block16").mouseenter(function () {
+	$(this).fadeTo("slow", 0.01);
 });
 
-$(".block").mouseleave(function () {
-	$(this).fadeTo("slow", 1)
+$(".block16").mouseleave(function () {
+	$(this).fadeTo(300, 1)
 });
 
 });
