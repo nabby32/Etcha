@@ -9,10 +9,11 @@ $("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
 var red = Math.floor(Math.random() * 256);
 var green = Math.floor(Math.random() * 256);
 var blue = Math.floor(Math.random() * 256);
+var randomColor = "rgb(" + red + ", " + blue + ", " + green + ")";
 
 /*Size Button Click*/
 $("#size").click(function () {
-	var sizePrompt = prompt("Please choose your grid size from 16, 36, 64, or 144.");
+	var sizePrompt = prompt("Please choose your grid size from 16, 36, 64, 144, or 625.");
 
 switch(sizePrompt) {
 	case "16":
@@ -42,6 +43,13 @@ switch(sizePrompt) {
 		};
 	break;
 
+	case "625":
+		$("#wrapper").html("<div class='block625 blocks'></div>");
+		for(var d = 0; d < 624; d++) {
+			$("#wrapper > :first-child").after("<div class='block625 blocks'></div>");
+		};
+	break;
+
 	default:
 	$("#wrapper").html("<div class='block16 blocks'></div>");
 	for(var e = 0; e < 15; e++) {
@@ -50,11 +58,11 @@ switch(sizePrompt) {
 };
 
 $(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.01);
+	$(this).fadeTo(175, 0.01);
 });
 
 $(".blocks").mouseleave(function () {
-	$(this).fadeTo(300, 1)
+	$(this).fadeTo(175, 1)
 });
 
 });
@@ -67,27 +75,34 @@ $("#style").click(function () {
 
 switch(stylePrompt) {
 	case "black":
+	$(".blocks").mouseenter(function () {
+	$(this).fadeTo(175, 0.01);
+});
+
+$(".blocks").mouseleave(function () {
+	$(this).fadeTo(175, 1)
+});
 	break;
 	
 	case "draw":
 	$(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.01);
+	$(this).fadeTo(175, 0.01);
 });
 	break;
 
 	case "rainbow":
 	$(".blocks").mouseenter(function () {
-	$(this).css("background-color", red + "," + blue + "," + green);
-	$(this).fadeTo(300, 0.01);
+	$(this).css("background-color", randomColor);
+	$(this).fadeTo(175, 0.01);
 });
 	$(".blocks").mouseleave(function () {
-	$(this).fadeTo(300, 1)
+	$(this).fadeTo(175, 1)
 });
 	break;
 
 	case "rainbow draw":
 	$(".blocks").mouseenter(function () {
-	$(this).css("background-color", " + red + "," + green + "," + blue + ");
+	$(this).css("background-color", randomColor);
 	});
 	break;
 
@@ -97,10 +112,10 @@ switch(stylePrompt) {
 		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
 	};
 	$(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.01);
+	$(this).fadeTo(175, 0.01);
 });
 	$(".blocks").mouseleave(function () {
-	$(this).fadeTo(300, 1)
+	$(this).fadeTo(175, 1)
 });
 
 };
@@ -115,21 +130,21 @@ $("#clear").click(function () {
 		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
 	};
 	$(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.01);
+	$(this).fadeTo(175, 0.01);
 });
 
 	$(".blocks").mouseleave(function () {
-	$(this).fadeTo(300, 1)
+	$(this).fadeTo(175, 1)
 });
 });
 
-
+/* Standard Page Load */
 $(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.01);
+	$(this).fadeTo(175, 0.01);
 });
 
 $(".blocks").mouseleave(function () {
-	$(this).fadeTo(300, 1)
+	$(this).fadeTo(175, 1)
 });
 
 
