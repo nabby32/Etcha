@@ -1,61 +1,34 @@
 $(document).ready(function() {
 
 
-for(var a = 0; a < 16; a++) {
-$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
+for(var a = 0; a < 15; a++) {
+$("#wrapper > :first-child").after("<div class='blocks'></div>");
 };
-
 
 var red = Math.floor(Math.random() * 256);
 var green = Math.floor(Math.random() * 256);
 var blue = Math.floor(Math.random() * 256);
 var randomColor = "rgb(" + red + ", " + blue + ", " + green + ")";
 
+
 /*Size Button Click*/
 $("#size").click(function () {
-	var sizePrompt = prompt("Please choose your grid size from 16, 36, 64, 144, or 625.");
+	var sizePrompt = prompt("Please choose your grid height/width.");
+	while (660%sizePrompt) {
+		sizePrompt++;
+	}
+	var blockSize = Math.floor(660/sizePrompt);
 
-switch(sizePrompt) {
-	case "16":
-		for(var c = 0; c < 16; c++) {
-		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
-	};
-	break;
-	
-	case "36":
-		$("#wrapper").html("<div class='block36 blocks'></div>");
-		for(var b = 0; b < 35; b++) {
-			$("#wrapper > :first-child").after("<div class='block36 blocks'></div>");
-		};
-	break;
-
-	case "64":
-		$("#wrapper").html("<div class='block64 blocks'></div>");
-		for(var d = 0; d < 63; d++) {
-			$("#wrapper > :first-child").after("<div class='block64 blocks'></div>");
-		};
-	break;
-
-	case "144":
-		$("#wrapper").html("<div class='block144 blocks'></div>");
-		for(var f = 0; f < 143; f++) {
-			$("#wrapper > :first-child").after("<div class='block144 blocks'></div>");
-		};
-	break;
-
-	case "625":
-		$("#wrapper").html("<div class='block625 blocks'></div>");
-		for(var d = 0; d < 624; d++) {
-			$("#wrapper > :first-child").after("<div class='block625 blocks'></div>");
-		};
-	break;
-
-	default:
-	$("#wrapper").html("<div class='block16 blocks'></div>");
-	for(var e = 0; e < 15; e++) {
-		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
-	};
-};
+	if(sizePrompt <= 70) {
+		$("#wrapper > :first-child").nextAll().remove();
+		for(var z = 0; z < ((sizePrompt*sizePrompt)-1); z++) {
+			$("#wrapper > :first-child").after("<div class='blocks'></div>");
+		}
+	}
+	else {alert("Please enter a size smaller than 70, as my code is not efficient enough to handle anything higher.");
+		$(html).css("display", "none");
+		location.reload(true);}
+	$(".blocks").css({"height":blockSize + "px", "width":blockSize + "px"});
 
 $(".blocks").mouseenter(function () {
 	$(this).fadeTo(175, 0.01);
@@ -66,7 +39,6 @@ $(".blocks").mouseleave(function () {
 });
 
 });
-
 
 
 /* Style Button Click */
@@ -86,14 +58,14 @@ $(".blocks").mouseleave(function () {
 	
 	case "draw":
 	$(".blocks").mouseenter(function () {
-	$(this).fadeTo(175, 0.01);
-});
+	$(this).css("opacity", "0.01");
+	});
 	break;
 
 	case "rainbow":
 	$(".blocks").mouseenter(function () {
 	$(this).css("background-color", randomColor);
-	$(this).fadeTo(175, 0.01);
+	$(this).fadeTo(175, 0.2);
 });
 	$(".blocks").mouseleave(function () {
 	$(this).fadeTo(175, 1)
@@ -117,6 +89,7 @@ $(".blocks").mouseleave(function () {
 	$(".blocks").mouseleave(function () {
 	$(this).fadeTo(175, 1)
 });
+	break;
 
 };
 
@@ -125,7 +98,7 @@ $(".blocks").mouseleave(function () {
 /* Clear Click */
 $("#clear").click(function () {
 	$("#wrapper").empty();
-	$("#wrapper").html("<div class='block16 blocks'></div>");
+	$("#wrapper").html("<div class='blocks'></div>");
 	for(var e = 0; e < 15; e++) {
 		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
 	};
