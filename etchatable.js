@@ -1,126 +1,50 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-
-for(var a = 0; a < 15; a++) {
-$("#wrapper > :first-child").after("<div class='blocks'></div>");
+/* Page Load Grid */
+for(var a = 0; a < 4; a ++) {
+	$("#myGrid").append("<tr class='row'></tr>");
+}
+for(var b = 0; b < 4; b++) {
+	$(".row").append("<td class='blocks'></td>");
 };
 
-
-/*Size Button Click*/
+/* Size Click */
 $("#size").click(function () {
-	var sizePrompt = prompt("Please choose your grid height/width.");
-	while (660%sizePrompt) {
-		sizePrompt++;
-	}
-	var blockSize = Math.floor(660/sizePrompt);
-
-	if(sizePrompt <= 70) {
-		$("#wrapper > :first-child").nextAll().remove();
-		for(var z = 0; z < ((sizePrompt*sizePrompt)-1); z++) {
-			$("#wrapper > :first-child").after("<div class='blocks'></div>");
-		}
-	}
-	else {alert("Please enter a size smaller than 70, as my code is not efficient enough to handle anything higher.");
-		$(html).css("display", "none");
-		location.reload(true);}
-	$(".blocks").css({"height":blockSize + "px", "width":blockSize + "px"});
-
-$(".blocks").mouseenter(function () {
-	$(this).fadeTo(175, 0.01);
-});
-
-$(".blocks").mouseleave(function () {
-	$(this).fadeTo(175, 1)
-});
-
-});
-
-
-/* Style Button Click */
-$("#style").click(function () {
-	var stylePrompt = prompt("Please choose your grid style from black, draw, rainbow, or rainbow draw.");
-
-switch(stylePrompt) {
-	case "black":
-	$(".blocks").mouseenter(function () {
-		$(this).fadeTo(175, 0.01);
-	});
-	$(".blocks").mouseleave(function () {
-		$(this).fadeTo(175, 1)
-	});
-	break;
+	var sizePrompt = prompt("Please choose the height/width of your grid.");
 	
-	case "draw":
-	$(".blocks").mouseenter(function () {
-	$(this).css("opacity", "0.01");
-	});
-	break;
-
-	case "rainbows":
-	$(".blocks").mouseenter(function () {
-		var red = Math.floor(Math.random() * 256);
-		var green = Math.floor(Math.random() * 256);
-		var blue = Math.floor(Math.random() * 256);
-		var randomColor = "rgb(" + red + ", " + blue + ", " + green + ")";
-		$(this).css("background-color", randomColor);
-		$(this).fadeTo(200, 0.05);
-	});
-	$(".blocks").mouseleave(function () {
-		$(this).fadeTo(175, 1)
-	});
-	break;
-
-	case "rainbow draw":
-	$(".blocks").mouseenter(function () {
-		var red = Math.floor(Math.random() * 256);
-		var green = Math.floor(Math.random() * 256);
-		var blue = Math.floor(Math.random() * 256);
-		var randomColor = "rgb(" + red + ", " + blue + ", " + green + ")";
-		$(this).css("background-color", randomColor);
-	});
-	break;
-
-	default:
-	$("#wrapper").html("<div class='block16 blocks'></div>");
-	for(var e = 0; e < 15; e++) {
-		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
+	/* Determing block size */
+	while(660%sizePrompt) {
+		sizePrompt++
+	}
+	var blockSize = 660/sizePrompt;
+	
+	/* Filling the Grid */
+	$("#myGrid").empty();
+	for(var d = 0; d < sizePrompt; d ++) {
+	$("#myGrid").append("<tr class='row'></tr>");
+	$(".row").css("height", blockSize-2);
 	};
+	for(var e = 0; e < sizePrompt; e++) {
+	$(".row").append("<td class='blocks'></td>");
+	$(".blocks").css({"height":blockSize-2 + "px", "width":blockSize + "px"});
+	}
 	$(".blocks").mouseenter(function () {
-		$(this).fadeTo(175, 0.01);
+	$(this).fadeTo(100, 0.02);
 	});
-	$(".blocks").mouseleave(function () {
-		$(this).fadeTo(175, 1)
+	$(".blocks").mouseleave(function() {
+	$(this).fadeTo(200, 1);
 	});
-	break;
-
-};
 
 });
 
-/* Clear Click */
-$("#clear").click(function () {
-	$("#wrapper").empty();
-	$("#wrapper").html("<div class='blocks'></div>");
-	for(var e = 0; e < 15; e++) {
-		$("#wrapper > :first-child").after("<div class='block16 blocks'></div>");
-	};
-	$(".blocks").mouseenter(function () {
-	$(this).fadeTo(175, 0.01);
-});
 
-	$(".blocks").mouseleave(function () {
-	$(this).fadeTo(175, 1)
-});
-});
+/* Page Load Etching */
 
-/* Standard Page Load */
 $(".blocks").mouseenter(function () {
-	$(this).fadeTo(175, 0.01);
+	$(this).fadeTo(300, 0.02);
 });
-
-$(".blocks").mouseleave(function () {
-	$(this).fadeTo(175, 1)
+$(".blocks").mouseleave(function() {
+	$(this).fadeTo(200, 1);
 });
-
 
 });

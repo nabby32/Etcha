@@ -50,14 +50,22 @@ body {
 	margin: 10px auto 0px auto;
 }
 
+#myGrid {
+	max-width: 660px;
+	max-height: 660px;
+}
+
+.row {
+	height: 165px;
+}
+
 .blocks {
 	background-color: black;
-	display: inline-block;
-	height: 165px;
-	width: 165px;
+	height: 160px;
+	width: 160px;
 	border: none;
 	font-size: 0px;
-	margin: 0 0 -6px 0;
+	margin: 0 0 0 0;
 }
 
 
