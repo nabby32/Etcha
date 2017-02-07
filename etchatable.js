@@ -8,6 +8,15 @@ for(var b = 0; b < 4; b++) {
 	$(".row").append("<td class='blocks'></td>");
 };
 
+/* Page Load Etching */
+
+$(".blocks").mouseenter(function () {
+	$(this).fadeTo(300, 0.02);
+});
+$(".blocks").mouseleave(function() {
+	$(this).fadeTo(200, 1);
+});
+
 /* Size Click */
 $("#size").click(function () {
 	var sizePrompt = prompt("Please choose the height/width of your grid.");
@@ -37,14 +46,64 @@ $("#size").click(function () {
 
 });
 
+/* Style Click */
 
-/* Page Load Etching */
+$("#style").click(function () {
+	$("#wrapper").toggle();
+	$(".underStyle").toggle(100);
+});
 
-$(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.02);
+$(".underStyle").mouseenter(function() {
+	$(this).css({"background-color":"#951004"})
 });
-$(".blocks").mouseleave(function() {
-	$(this).fadeTo(200, 1);
+
+$(".underStyle").mouseleave(function () {
+	$(this).css("background-color","#af1104")
 });
+
+/* Default Style */
+$("#black").click(function () {
+	$(".underStyle").toggle();
+	$("#wrapper").toggle();
+});
+
+/* Rainbow */
+$("#rainbow").click(function () {
+	$(".underStyle").toggle();
+	$("#wrapper").toggle();
+	$(".blocks").mouseenter(function () {
+		var red = Math.floor(Math.random() * 256);
+		var green = Math.floor(Math.random() * 256);
+		var blue = Math.floor(Math.random() * 256);
+		var randomColor = "rgb(" + red + ", " + blue + ", " + green + ")";
+		$(this).css("background-color", randomColor);
+	});
+	$(".blocks").mouseleave(function () {
+		$(this).css("background-color", "black")
+	});
+});
+
+/* Draw */
+$("#draw").click(function () {
+	$(".underStyle").toggle();
+	$("#wrapper").toggle();
+	$(".blocks").mouseenter(function () {
+		$(this).fadeTo(200, 0.02);
+	});
+});
+
+/* Scratch */
+$("#scratch").click(function () {
+	$(".underStyle").toggle();
+	$("#wrapper").toggle();
+	var opacity = 1;
+	$(".blocks").mouseenter(function () {
+		$(this).css("opacity", opacity - 0.1);
+	});
+});
+
+
+
+
 
 });
