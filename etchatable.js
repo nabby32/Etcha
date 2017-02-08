@@ -11,10 +11,7 @@ for(var b = 0; b < 4; b++) {
 /* Page Load Etching */
 
 $(".blocks").mouseenter(function () {
-	$(this).fadeTo(300, 0.02);
-});
-$(".blocks").mouseleave(function() {
-	$(this).fadeTo(200, 1);
+	$(this).fadeTo(300, 1);
 });
 
 /* Size Click */
@@ -38,11 +35,8 @@ $("#size").click(function () {
 	$(".blocks").css({"height":blockSize-2 + "px", "width":blockSize + "px"});
 	}
 	$(".blocks").mouseenter(function () {
-	$(this).fadeTo(100, 0.02);
-	});
-	$(".blocks").mouseleave(function() {
-	$(this).fadeTo(200, 1);
-	});
+	$(this).fadeTo(300, 1);
+});
 
 });
 
@@ -54,11 +48,11 @@ $("#style").click(function () {
 });
 
 $(".underStyle").mouseenter(function() {
-	$(this).css({"background-color":"#951004"})
+	$(this).css({"background-color":"#ac2d02"})
 });
 
 $(".underStyle").mouseleave(function () {
-	$(this).css("background-color","#af1104")
+	$(this).css("background-color","#C53302")
 });
 
 /* Default Style */
@@ -71,15 +65,19 @@ $("#black").click(function () {
 $("#rainbow").click(function () {
 	$(".underStyle").toggle();
 	$("#wrapper").toggle();
+	$("#myGrid").empty();
+	for(var a = 0; a < 4; a ++) {
+	$("#myGrid").append("<tr class='row'></tr>");
+	}
+	for(var b = 0; b < 4; b++) {
+	$(".row").append("<td class='blocks'></td>");
+	};
 	$(".blocks").mouseenter(function () {
 		var red = Math.floor(Math.random() * 256);
 		var green = Math.floor(Math.random() * 256);
 		var blue = Math.floor(Math.random() * 256);
 		var randomColor = "rgb(" + red + ", " + blue + ", " + green + ")";
-		$(this).css("background-color", randomColor);
-	});
-	$(".blocks").mouseleave(function () {
-		$(this).css("background-color", "black")
+		$(this).css({"background-color":randomColor, "opacity":"1"});
 	});
 });
 
@@ -87,8 +85,15 @@ $("#rainbow").click(function () {
 $("#draw").click(function () {
 	$(".underStyle").toggle();
 	$("#wrapper").toggle();
+	$("#myGrid").empty();
+	for(var a = 0; a < 4; a ++) {
+	$("#myGrid").append("<tr class='row'></tr>");
+	}
+	for(var b = 0; b < 4; b++) {
+	$(".row").append("<td class='blocks'></td>");
+	};
 	$(".blocks").mouseenter(function () {
-		$(this).fadeTo(200, 0.02);
+		$(this).css({"background-color":"#C53302", "opaciry":"1"});
 	});
 });
 
@@ -96,13 +101,16 @@ $("#draw").click(function () {
 $("#scratch").click(function () {
 	$(".underStyle").toggle();
 	$("#wrapper").toggle();
-	var opacity = 1;
+	var opacity = 0.01;
 	$(".blocks").mouseenter(function () {
-		$(this).css("opacity", opacity - 0.1);
+		$(this).css("opacity", opacity + 0.1);
 	});
 });
 
-
+/* Clear Page, Reload */
+$("#clear").click(function () {
+	location.reload();
+})
 
 
 
